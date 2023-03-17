@@ -9,11 +9,11 @@
   }
 
   .row {
-    display: grid;
-    grid-auto-rows: 1fr;
+    grid-column: span 3;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 }
+

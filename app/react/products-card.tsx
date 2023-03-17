@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {getProducts, getContents} from '../services';
 
 const ProductsCard = ({content}) => {
-  const classes = `product-card ${content?.position ? 'row' : ''}`
+  const classes = `product-card ${content?.position?.includes('row') ? 'row' : ''}`
 
   return (
     <div className={classes}>
