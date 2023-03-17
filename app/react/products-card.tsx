@@ -7,6 +7,7 @@ const ProductsCard = ({content}) => {
   return (
     <div className={classes}>
       <h3>{content?.title || ''}</h3>
+      <div>{content?.contents}</div>
       <img src={content?.image} />
     </div>
   )
