@@ -17,10 +17,40 @@ const App = () => {
 
     setProducts(productsResponse);
     setContents(contentsResponse);
-
   }, [])
 
-  const cardContents = [...products, ...contents];
+  const combinedLength = products.length + contents.length;
+  const emptyCardContents = new Array(combinedLength).fill(null);
+
+  contents.forEach((content) => {
+    if (content?.position?.includes('row')) {
+      const positionNumber = content?.position?.slice(4);
+
+      emptyCardContents[positionNumber - 1] = content;
+    }
+
+    if (content?.position?.includes('cell')) {
+      const positionNumber = content?.position?.slice(5);
+
+      emptyCardContents[positionNumber - 1] = content;
+    }
+  })
+
+  /*
+  it would make sense to do it like this:
+  [
+    [content, product, content],
+    [],
+    []
+  ]
+  */
+
+  const cardContents = emptyCardContents.map((cardContent) => {
+    if (!cardContent) {
+      const product = products.shift();
+      return product;
+    }
+  })
 
   return (<div>
     <ProductsGrid 
