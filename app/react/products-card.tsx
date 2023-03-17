@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {getProducts, getContents} from '../services';
 
-const ProductsCard = ({product}) => {
+const ProductsCard = ({content}) => {
+  const classes = `product-card ${content?.position ? 'row' : ''}`
 
-  console.log(product)
   return (
-    <div className="product-card">
-      <h3>{product.title}</h3>
-      <img src={product.image}></img>
+    <div className={classes}>
+      <h3>{content?.title || ''}</h3>
+      <img src={content?.image} />
     </div>
   )
 };

@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from "react";
 import {getProducts, getContents} from '../services';
-import ProductsColumn from './products-column';
+import ProductsGrid from './products-grid';
 
 
 const App = () => {
@@ -20,8 +20,12 @@ const App = () => {
 
   }, [])
 
+  const cardContents = [...products, ...contents];
+
   return (<div>
-    <ProductsColumn products={products} />
+    <ProductsGrid 
+      cardContents={cardContents}
+    />
   </div>)
 };
 
